@@ -4,9 +4,21 @@
   format:                "" # the format in which the data is saved csv, json, xml, ...
   tags:                  "" # label the domain dataset so that to be easily findable and accessible
   version:               "" # the version of the dataset
+  preprocess:
+    langs:               "it"
+    data_path:           "data/"
+    years:               "1968"  # "all",
+    seeds:               "110"
+    add_title:           "False"
+    title_only:          "False"
+    max_length:          512
+    limit_tokenizer:     "False"
+    add_mt_do:           "False"
+    get_doc_ids:         "False"
+
   instances:
-      - description:
-        uri:               # reference the dataset implementation example. inline (local) / url (remote) 
+    - description:
+     uri:               # reference the dataset implementation example. inline (local) / url (remote) 
   
   validation:
     - type:              "" # specific constraints the dataset may need to fulfill (Frictionless, GreatExpt, Evidently, ....)
