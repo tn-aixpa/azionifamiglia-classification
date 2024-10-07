@@ -13,6 +13,7 @@ import json
 import gzip
 import pickle
 import math
+from zipfile import ZipFile
 from copy import deepcopy
 from datetime import datetime
 from pagerange import PageRange
@@ -430,7 +431,7 @@ def process_datasets(
     save_splits(X, masks, y, directory, mlb, data_path, seeds)
 
 
-def preprocess_data(
+def preprocess_data(raw_data_zip: Artifact
     langs="it",
     data_path="data/",
     years="1968",  # "all",
@@ -452,6 +453,11 @@ def preprocess_data(
 
     print(f"Tokenizers config:\n{format(config)}")
 
+    # download the raw data artifact
+    zip_file_path = raw_data_zip.download()
+    zip = ZipFile(zip_file_path)
+    zip.extractall("data")
+    
     for directory in os.listdir(data_path):
         # If we specified one or more languages, we only process those.
         if langs != "all" and directory not in langs.split(","):
@@ -474,3 +480,8 @@ def preprocess_data(
             limit_tokenizer,
             seeds,
         )
+    # TODO log artifact in the project or context
+    obj = log_artifact(project="aipc_text_classification",
+                    name="training_data",
+                    kind="artifact",
+                    source="./data")
