@@ -1,0 +1,45 @@
+   name:                   "Fine tuning procedure" # name of the adaptation procedure
+   description:            "" # 
+   tags:                   "adaptation, causalLM, lora, dialogue" #
+   version:                "0.1" #
+   framework:              "pytorch"    
+   reference_model:        "../models/checkpoints" # 
+   prompting:              # apply WISER Framework
+    role:                  "" # Who - Assign an identity or role
+    instruction:           "" # Instruction - Tell the model what to do
+    sub_tasks:             "" # break it down into simpler steps
+    examples:              "" # provide examples if applicable
+    template: |
+        ### Instruction:
+        {instruction}
+
+        ### Input:
+        {input}
+
+        ### Response:
+   rag:                    #     
+    external_resource:    "" #
+    external_link:        "" #       
+
+   implementation:         
+     runtime:              "" #
+     source:               "" #
+     parameters:
+       - name:             "seed" # name of the parameter
+         desc:             "" # description of the parameter
+         value:            "42" # value of the parameter
+       learning_rate:      ""
+       epochs:             ""
+       batch_size:         ""
+     requirements:         "" #
+     resources:            #
+       gpu:                #
+       vram:
+   evaluation:             # 
+    - type:                "" #
+      definition:          "" #
+      implementation:      "" #
+        runtime:           "" #
+        source:            "" #
+        requirements:      "" #     
+        resources:         "" #

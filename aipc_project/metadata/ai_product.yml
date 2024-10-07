@@ -1,0 +1,10 @@
+entry_points:
+  data_preparation_ep:
+   metadata:
+   script:
+  training_ep:
+   metadata: model.yml
+   script: ../implementation/src/functions/train-model.py
+  validation_ep:
+   metadata: 
+   script: ../implementation/
